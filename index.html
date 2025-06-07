@@ -1,30 +1,63 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Кафе Юрмала</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
 <body>
-  <header>
-    <div class="logo">Кафе Юрмала</div>
+<header>
+  <div class="logo">Кафе Юрмала</div>
 
-    <div class="burger" id="burger" aria-label="Відкрити меню" role="button" tabindex="0">
-      <div></div>
-      <div></div>
-      <div></div>
+  <div class="burger" id="burger" aria-label="Відкрити меню" role="button" tabindex="0">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <nav id="nav">
+    <a href="#">Меню</a>
+    <a href="#">Про нас</a>
+    <a href="#">Контакти</a>
+    <button id="theme-toggle" aria-label="Переключити тему">🌙</button>
+  </nav>
+</header>
+
+<!-- Напівпрозорий бекдроп для закриття меню -->
+<div id="overlay"></div>
+
+<section class="hero">
+  <img src="https://via.placeholder.com/800x300" alt="Герой зображення" width="800" height="300" />
+  <p class="description">Ласкаво просимо до нашого ресторану!</p>
+</section>
+
+<section class="buttons">
+  <button>Замовити</button>
+  <button>Меню</button>
+  <button>Контакти</button>
+</section>
+
+<section class="meals">
+  <h2>Наші страви</h2>
+  <div class="meal-grid">
+    <div class="meal-card">
+      <img src="https://via.placeholder.com/220" alt="Страва 1" width="220" height="220" />
+      <div class="meal-title">Страва 1</div>
+      <div class="meal-price">120 грн</div>
     </div>
-
-    <nav id="nav">
-      <a href="#">Меню</a>
-      <a href="#">Про нас</a>
-      <a href="#">Контакти</a>
-      <button id="theme-toggle" aria-label="Переключити тему">🌙</button>
-    </nav>
-  </header>
-
-  <!-- Бекдроп для затемнення -->
-  <div id="overlay"></div>
-
-  <section class="hero">
-    <img src="https://via.placeholder.com/800x300" alt="Герой зображення" width="800" height="300" />
-    <p class="description">Ласкаво просимо до нашого ресторану!</p>
-  </section>
-
-  <!-- Інші секції -->
+    <div class="meal-card">
+      <img src="https://via.placeholder.com/220" alt="Страва 2" width="220" height="220" />
+      <div class="meal-title">Страва 2</div>
+      <div class="meal-price">150 грн</div>
+    </div>
+    <div class="meal-card">
+      <img src="https://via.placeholder.com/220" alt="Страва 3" width="220" height="220" />
+      <div class="meal-title">Страва 3</div>
+      <div class="meal-price">100 грн</div>
+    </div>
+  </div>
+</section>
 
 <script>
 const burger = document.getElementById('burger');
@@ -59,3 +92,4 @@ themeToggle.addEventListener('click', () => {
 });
 </script>
 </body>
+</html>
