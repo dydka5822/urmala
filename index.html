@@ -3,12 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Твій сайт</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Кеш-бастер приклад</title>
+
+  <script>
+    // Функція для динамічного підключення CSS з кеш-бастер параметром
+    function loadCSS(file) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = file + '?v=' + new Date().getTime();
+      document.head.appendChild(link);
+    }
+
+    // Функція для динамічного підключення JS з кеш-бастер параметром
+    function loadJS(file) {
+      const script = document.createElement('script');
+      script.src = file + '?v=' + new Date().getTime();
+      document.body.appendChild(script);
+    }
+
+    // Підключаємо CSS і JS при завантаженні head
+    loadCSS('styles.css');
+    loadJS('script.js');
+  </script>
 </head>
 <body>
   <header>
-    <div class="logo">Логотип</div>
+    <div class="logo">Лого</div>
     <nav>
       <a href="#">Головна</a>
       <a href="#">Про нас</a>
@@ -18,45 +38,29 @@
   </header>
 
   <section class="hero">
-    <img src="https://via.placeholder.com/600x300" alt="Hero Image" />
-    <p class="description">Опис героя з чудовим дизайном і адаптивністю.</p>
+    <img src="hero.jpg" alt="Герой зображення" />
+    <p class="description">Опис секції героя</p>
   </section>
 
   <section class="buttons">
     <button>Кнопка 1</button>
     <button>Кнопка 2</button>
-    <button>Кнопка 3</button>
   </section>
 
   <section class="meals">
     <h2>Наші страви</h2>
     <div class="meal-grid">
       <div class="meal-card">
-        <img src="https://via.placeholder.com/220x150" alt="Страва 1" />
+        <img src="meal1.jpg" alt="Страва 1" />
         <div class="meal-title">Страва 1</div>
-        <div class="meal-price">120 грн</div>
-      </div>
-      <div class="meal-card">
-        <img src="https://via.placeholder.com/220x150" alt="Страва 2" />
-        <div class="meal-title">Страва 2</div>
-        <div class="meal-price">150 грн</div>
-      </div>
-      <div class="meal-card">
-        <img src="https://via.placeholder.com/220x150" alt="Страва 3" />
-        <div class="meal-title">Страва 3</div>
         <div class="meal-price">100 грн</div>
+      </div>
+      <div class="meal-card">
+        <img src="meal2.jpg" alt="Страва 2" />
+        <div class="meal-title">Страва 2</div>
+        <div class="meal-price">120 грн</div>
       </div>
     </div>
   </section>
-
-  <script>
-    const themeToggle = document.getElementById('theme-toggle');
-
-    themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      // Для дебагу можна раскоментити:
-      // console.log('Theme toggled. Current classList:', document.body.classList.value);
-    });
-  </script>
 </body>
 </html>
