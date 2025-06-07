@@ -7,79 +7,57 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="wrapper">
-    <header>
-      <div class="logo">Кафе Юрмала</div>
+<header>
+  <div class="logo">Кафе Юрмала</div>
 
-      <div class="burger" id="burger" aria-label="Відкрити меню" role="button" tabindex="0">
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-
-      <nav id="nav">
-        <a href="#">Меню</a>
-        <a href="#">Про нас</a>
-        <a href="#">Контакти</a>
-        <button id="theme-toggle" aria-label="Переключити тему">🌙</button>
-      </nav>
-      <div id="overlay"></div>
-    </header>
-    <section class="hero">
-      <img src="https://via.placeholder.com/800x300" alt="Герой зображення" width="800" height="300" />
-      <p class="description">Ласкаво просимо до нашого ресторану!</p>
-    </section>
-
-    <section class="buttons">
-      <button>Замовити</button>
-      <button>Меню</button>
-      <button>Контакти</button>
-    </section>
-
-    <section class="meals">
-      <h2>Наші страви</h2>
-      <div class="meal-grid">
-        <div class="meal-card">
-          <img src="https://via.placeholder.com/220" alt="Страва 1" width="220" height="220" />
-          <div class="meal-title">Страва 1</div>
-          <div class="meal-price">120 грн</div>
-        </div>
-        <div class="meal-card">
-          <img src="https://via.placeholder.com/220" alt="Страва 2" width="220" height="220" />
-          <div class="meal-title">Страва 2</div>
-          <div class="meal-price">150 грн</div>
-        </div>
-        <div class="meal-card">
-          <img src="https://via.placeholder.com/220" alt="Страва 3" width="220" height="220" />
-          <div class="meal-title">Страва 3</div>
-          <div class="meal-price">100 грн</div>
-        </div>
-      </div>
-    </section>
+  <div class="burger" id="burger" aria-label="Відкрити меню" role="button" tabindex="0">
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
 
-  <script>
- const burger = document.getElementById('burger');
-const nav = document.getElementById('nav');
-const overlay = document.getElementById('overlay');
-const themeToggle = document.getElementById('theme-toggle');
+  <nav id="nav" aria-label="Головне меню">
+    <a href="#">Меню</a>
+    <a href="#">Про нас</a>
+    <a href="#">Контакти</a>
+    <button id="theme-toggle" aria-label="Переключити тему">🌙</button>
+  </nav>
 
-burger.addEventListener('click', () => {
-  nav.classList.toggle('open');
-  overlay.classList.toggle('active');
-});
+  <div id="overlay"></div>
+</header>
 
-overlay.addEventListener('click', () => {
-  nav.classList.remove('open');
-  overlay.classList.remove('active');
-});
+<section class="hero">
+  <img src="https://via.placeholder.com/800x300" alt="Герой зображення" width="800" height="300" />
+  <p class="description">Ласкаво просимо до нашого ресторану!</p>
+</section>
 
-themeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-  themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-});
+<section class="buttons">
+  <button>Замовити</button>
+  <button>Меню</button>
+  <button>Контакти</button>
+</section>
 
+<section class="meals">
+  <h2>Наші страви</h2>
+  <div class="meal-grid">
+    <div class="meal-card">
+      <img src="https://via.placeholder.com/220" alt="Страва 1" width="220" height="220" />
+      <div class="meal-title">Страва 1</div>
+      <div class="meal-price">120 грн</div>
+    </div>
+    <div class="meal-card">
+      <img src="https://via.placeholder.com/220" alt="Страва 2" width="220" height="220" />
+      <div class="meal-title">Страва 2</div>
+      <div class="meal-price">150 грн</div>
+    </div>
+    <div class="meal-card">
+      <img src="https://via.placeholder.com/220" alt="Страва 3" width="220" height="220" />
+      <div class="meal-title">Страва 3</div>
+      <div class="meal-price">100 грн</div>
+    </div>
+  </div>
+</section>
 
-  </script>
+<script src="script.js"></script>
 </body>
 </html>
