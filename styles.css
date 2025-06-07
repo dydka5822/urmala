@@ -1,4 +1,4 @@
-/* Скидання стилів і box-sizing */
+/* Скидання стилів */
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +10,17 @@ body {
   background-color: #fefcf7;
   color: #333;
   line-height: 1.5;
-  min-height: 100vh;
+  display: flex;
+  justify-content: center; /* Центруємо весь контент по горизонталі */
+  padding: 20px 0;
+}
+
+.wrapper {
+  width: 360px; /* Фіксована ширина, типова ширина смартфона */
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 /* Шапка */
@@ -18,190 +28,144 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 15px;
   background-color: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  border-bottom: 1px solid #ccc;
 }
 
 .logo {
-  font-size: 1.8rem;
+  font-size: 20px;
   font-weight: bold;
   color: #333;
 }
 
 nav {
   display: flex;
-  gap: 1.8rem;
-  align-items: center;
+  gap: 15px;
 }
 
 nav a {
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 14px;
   color: #333;
   font-weight: 600;
-  padding: 0.3rem 0.6rem;
-  border-radius: 6px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-nav a:hover,
-nav a:focus {
-  background-color: #d4c8a9;
-  color: #fff;
-  outline: none;
 }
 
 #theme-toggle {
   background: none;
   border: none;
-  font-size: 1.4rem;
   cursor: pointer;
-  padding: 0.2rem 0.6rem;
-  border-radius: 6px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  color: #333;
-}
-
-#theme-toggle:hover,
-#theme-toggle:focus {
-  background-color: #d4c8a9;
-  color: #fff;
-  outline: none;
+  font-size: 18px;
+  padding-left: 10px;
 }
 
 /* Герой-секція */
 .hero {
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 15px;
   background-color: #fff9e5;
 }
 
 .hero img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .description {
-  margin-top: 1rem;
-  font-size: 1.2rem;
+  margin-top: 10px;
+  font-size: 16px;
   color: #555;
 }
 
 /* Кнопки */
 .buttons {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-  padding: 1.5rem 1rem;
+  justify-content: space-around;
+  padding: 15px;
   background-color: #f7f1e7;
 }
 
 .buttons button {
-  padding: 0.7rem 1.6rem;
-  font-size: 1rem;
+  padding: 10px 15px;
+  font-size: 14px;
   font-weight: 600;
-  color: #fff;
+  color: white;
   background-color: #b3a369;
   border: none;
-  border-radius: 6px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  flex: 1;
+  margin: 0 5px;
 }
 
-.buttons button:hover,
-.buttons button:focus {
+.buttons button:hover {
   background-color: #918452;
-  outline: none;
 }
 
-/* Секція Наші страви */
+/* Наші страви */
 .meals {
-  padding: 2rem 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 15px;
+  background-color: white;
   text-align: center;
 }
 
 .meals h2 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
+  font-size: 18px;
+  margin-bottom: 15px;
   color: #5a4f2b;
 }
 
 .meal-grid {
   display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
 }
 
 .meal-card {
-  background-color: #fff;
+  width: 100%;
+  background: #fff;
   border-radius: 10px;
-  width: 220px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-}
-
-.meal-card:hover {
-  transform: translateY(-5px);
+  overflow: hidden;
 }
 
 .meal-card img {
   width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 10px 10px 0 0;
+  height: auto;
 }
 
 .meal-title {
-  font-size: 1.2rem;
+  font-size: 16px;
   font-weight: 700;
   color: #5a4f2b;
-  margin: 0.8rem 0 0.3rem;
+  padding: 10px 0 5px;
 }
 
 .meal-price {
-  font-size: 1rem;
+  font-size: 14px;
   color: #847f65;
-  margin-bottom: 1rem;
+  padding-bottom: 10px;
 }
 
-/* Темна тема */
+/* Темна тема (залишаю, якщо хочеш) */
 body.dark-mode {
   background-color: #1e1e1e;
   color: #ddd;
 }
 
+body.dark-mode .wrapper {
+  background-color: #2a2a2a;
+}
+
 body.dark-mode header {
   background-color: #2b2b2b;
-  box-shadow: none;
+  border-bottom-color: #555;
 }
 
 body.dark-mode nav a {
   color: #ddd;
-}
-
-body.dark-mode nav a:hover,
-body.dark-mode nav a:focus {
-  background-color: #5a5a3a;
-  color: #fff;
-}
-
-body.dark-mode #theme-toggle {
-  color: #ddd;
-}
-
-body.dark-mode #theme-toggle:hover,
-body.dark-mode #theme-toggle:focus {
-  background-color: #5a5a3a;
-  color: #fff;
 }
 
 body.dark-mode .hero {
@@ -217,11 +181,6 @@ body.dark-mode .buttons button {
   background-color: #6c6c49;
 }
 
-body.dark-mode .buttons button:hover,
-body.dark-mode .buttons button:focus {
-  background-color: #565636;
-}
-
 body.dark-mode .meal-card {
   background-color: #2a2a2a;
   box-shadow: none;
@@ -233,59 +192,4 @@ body.dark-mode .meal-title {
 
 body.dark-mode .meal-price {
   color: #999;
-}
-
-/* Адаптація для мобільних */
-@media (max-width: 768px) {
-  nav {
-    gap: 1rem;
-  }
-
-  .buttons {
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-
-  .meal-grid {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .meal-card {
-    width: 90%;
-    max-width: 320px;
-  }
-}
-
-@media (max-width: 480px) {
-  header {
-    padding: 0.8rem 1rem;
-  }
-
-  .logo {
-    font-size: 1.4rem;
-  }
-
-  nav {
-    gap: 0.7rem;
-  }
-
-  nav a {
-    font-size: 0.9rem;
-    padding: 0.25rem 0.5rem;
-  }
-
-  #theme-toggle {
-    font-size: 1.2rem;
-    padding: 0.15rem 0.4rem;
-  }
-
-  .description {
-    font-size: 1rem;
-  }
-
-  .buttons button {
-    font-size: 0.95rem;
-    padding: 0.6rem 1.2rem;
-  }
 }
