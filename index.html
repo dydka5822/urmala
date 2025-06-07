@@ -3,28 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Приклад без бургер-меню</title>
+  <title>Твій сайт</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <header>
+    <div class="logo">Логотип</div>
+    <nav>
+      <a href="#">Головна</a>
+      <a href="#">Про нас</a>
+      <a href="#">Контакти</a>
+    </nav>
+    <button id="theme-toggle" aria-label="Змінити тему">🌓</button>
+  </header>
 
-<header>
-  <div class="logo">LOGO</div>
-
-  <nav>
-    <a href="#">Головна</a>
-    <a href="#">Про нас</a>
-    <a href="#">Меню</a>
-    <a href="#">Контакти</a>
-  </nav>
-
-  <button id="theme-toggle" aria-label="Перемикання теми">🌓</button>
-</header>
-
-<main>
   <section class="hero">
-    <img src="https://picsum.photos/600/300" alt="Hero Image" />
-    <p class="description">Опис героя з новим стилем і плавними переходами</p>
+    <img src="https://via.placeholder.com/600x300" alt="Hero Image" />
+    <p class="description">Опис героя з чудовим дизайном і адаптивністю.</p>
   </section>
 
   <section class="buttons">
@@ -34,34 +29,34 @@
   </section>
 
   <section class="meals">
-    <h2>Наше меню</h2>
+    <h2>Наші страви</h2>
     <div class="meal-grid">
       <div class="meal-card">
-        <img src="https://picsum.photos/220/150?1" alt="Блюдо 1" />
-        <div class="meal-title">Блюдо 1</div>
-        <div class="meal-price">₴100</div>
+        <img src="https://via.placeholder.com/220x150" alt="Страва 1" />
+        <div class="meal-title">Страва 1</div>
+        <div class="meal-price">120 грн</div>
       </div>
       <div class="meal-card">
-        <img src="https://picsum.photos/220/150?2" alt="Блюдо 2" />
-        <div class="meal-title">Блюдо 2</div>
-        <div class="meal-price">₴120</div>
+        <img src="https://via.placeholder.com/220x150" alt="Страва 2" />
+        <div class="meal-title">Страва 2</div>
+        <div class="meal-price">150 грн</div>
       </div>
       <div class="meal-card">
-        <img src="https://picsum.photos/220/150?3" alt="Блюдо 3" />
-        <div class="meal-title">Блюдо 3</div>
-        <div class="meal-price">₴90</div>
+        <img src="https://via.placeholder.com/220x150" alt="Страва 3" />
+        <div class="meal-title">Страва 3</div>
+        <div class="meal-price">100 грн</div>
       </div>
     </div>
   </section>
-</main>
 
-<script>
-  // Перемикач теми
-  const themeToggle = document.getElementById('theme-toggle');
-  themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-  });
-</script>
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
 
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      // Для дебагу можна раскоментити:
+      // console.log('Theme toggled. Current classList:', document.body.classList.value);
+    });
+  </script>
 </body>
 </html>
