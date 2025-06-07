@@ -23,6 +23,7 @@
         <a href="#">Контакти</a>
         <button id="theme-toggle" aria-label="Переключити тему">🌙</button>
       </nav>
+      <div id="overlay"></div>
     </header>
     <section class="hero">
       <img src="https://via.placeholder.com/800x300" alt="Герой зображення" width="800" height="300" />
@@ -60,38 +61,24 @@
   <script>
  const burger = document.getElementById('burger');
 const nav = document.getElementById('nav');
+const overlay = document.getElementById('overlay');
 const themeToggle = document.getElementById('theme-toggle');
 
 burger.addEventListener('click', () => {
   nav.classList.toggle('open');
-  burger.classList.toggle('open');
+  overlay.classList.toggle('active');
 });
 
-burger.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter' || e.key === ' ') {
-    nav.classList.toggle('open');
-    burger.classList.toggle('open');
-    e.preventDefault();
-  }
+overlay.addEventListener('click', () => {
+  nav.classList.remove('open');
+  overlay.classList.remove('active');
 });
 
 themeToggle.addEventListener('click', () => {
   document.body.classList.toggle('dark-mode');
-  if (document.body.classList.contains('dark-mode')) {
-    themeToggle.textContent = '☀️';
-  } else {
-    themeToggle.textContent = '🌙';
-  }
+  themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
 });
 
-// Ініціалізація кнопки при завантаженні сторінки
-window.addEventListener('DOMContentLoaded', () => {
-  if (document.body.classList.contains('dark-mode')) {
-    themeToggle.textContent = '☀️';
-  } else {
-    themeToggle.textContent = '🌙';
-  }
-});
 
   </script>
 </body>
