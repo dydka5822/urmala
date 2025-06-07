@@ -1,210 +1,140 @@
 /* ЗАГАЛЬНІ СТИЛІ */
-* {
-  box-sizing: border-box;
-}
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #fff;
-  color: #222;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  line-height: 1.5;
-  padding: 0 15px;
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f7f7;
+  color: #333;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 0;
-  border-bottom: 1px solid #ddd;
-}
-
-.logo {
-  font-weight: 700;
-  font-size: 1.5rem;
-}
-
-nav a {
-  margin: 0 10px;
-  color: #222;
+a {
+  color: #333;
   text-decoration: none;
-  font-weight: 600;
+  padding: 10px 15px;
+  display: inline-block;
   transition: color 0.3s ease;
 }
 
-nav a:hover {
-  color: #007bff;
+a:hover {
+  color: #0077cc;
+}
+
+header {
+  position: relative;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+  z-index: 1100;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 24px;
+  color: #222;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 #theme-toggle {
   background: none;
   border: none;
-  font-size: 24px;
+  font-size: 22px;
   cursor: pointer;
-  margin-left: 10px;
-  color: #222;
+  color: #333;
+  padding: 5px 10px;
   transition: color 0.3s ease;
 }
 
-#theme-toggle:hover {
-  color: #007bff;
-}
+/* БУРГЕР */
 
-/* ГЕРОЙ */
-.hero {
-  text-align: center;
-  margin: 20px 0;
-}
-
-.hero img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-.description {
-  font-size: 1.2rem;
-  margin-top: 10px;
-}
-
-/* КНОПКИ */
-.buttons {
-  text-align: center;
-  margin: 20px 0;
-}
-
-.buttons button {
-  background-color: #007bff;
-  border: none;
-  color: white;
-  padding: 12px 25px;
-  margin: 5px;
-  border-radius: 5px;
-  font-weight: 600;
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 25px;
+  height: 22px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  z-index: 1200;
 }
 
-.buttons button:hover {
-  background-color: #0056b3;
-}
-
-/* СТРАВИ */
-.meals {
-  margin-bottom: 40px;
-}
-
-.meals h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.meal-grid {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.meal-card {
-  width: 220px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
-  background-color: #fafafa;
-  transition: transform 0.3s ease;
-}
-
-.meal-card:hover {
-  transform: translateY(-5px);
-}
-
-.meal-card img {
-  display: block;
+.burger div {
   width: 100%;
-  height: auto;
+  height: 3px;
+  background-color: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
 }
 
-.meal-title {
-  font-weight: 700;
-  padding: 10px;
-  font-size: 1.1rem;
+/* БУРГЕР АКТИВНИЙ */
+
+.burger.open div:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
 }
 
-.meal-price {
-  padding: 0 10px 10px;
-  font-weight: 600;
-  color: #555;
+.burger.open div:nth-child(2) {
+  opacity: 0;
 }
 
-/* ТЕМНА ТЕМА */
-body.dark-mode {
-  background-color: #121212;
-  color: #ddd;
+.burger.open div:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
-body.dark-mode header {
-  border-color: #444;
+/* МЕНЮ */
+
+nav a {
+  font-size: 16px;
 }
 
-body.dark-mode nav a {
-  color: #ddd;
-}
+/* ВІДПОВІДНІСТЬ */
 
-body.dark-mode nav a:hover {
-  color: #1e90ff;
-}
-
-body.dark-mode #theme-toggle {
-  color: #ddd;
-}
-
-body.dark-mode .buttons button {
-  background-color: #1e90ff;
-}
-
-body.dark-mode .buttons button:hover {
-  background-color: #0f5bb5;
-}
-
-body.dark-mode .meal-card {
-  background-color: #222;
-  border-color: #333;
-  box-shadow: 0 2px 8px rgb(255 255 255 / 0.05);
-}
-
-body.dark-mode .meal-price {
-  color: #bbb;
-}
-
-/* Адаптивність */
-@media (max-width: 600px) {
-  .meal-grid {
+@media (max-width: 768px) {
+  nav {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    height: 100vh;
+    width: 250px;
+    background-color: #fff;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
+    padding: 60px 20px 20px 20px;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+    transition: right 0.3s ease;
+    z-index: 1050;
   }
 
-  nav {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+  nav.open {
+    right: 0;
   }
 
   nav a {
-    font-size: 1.2rem;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 18px;
+    border-bottom: 1px solid #ddd;
   }
 
-  .buttons button {
+  #theme-toggle {
+    margin-top: 20px;
     width: 100%;
-    max-width: 300px;
+    text-align: left;
+    padding-left: 0;
+  }
+
+  .burger {
+    display: flex;
   }
 }
 
-/* Бекдроп (темний фон поза меню) */
+/* БЕКДРОП */
+
 #overlay {
   position: fixed;
   top: 0; left: 0;
@@ -214,16 +144,30 @@ body.dark-mode .meal-price {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease;
-  z-index: 999; /* менше ніж у nav (1000+) */
+  z-index: 1040;
 }
 
-/* Активний бекдроп — показати */
 #overlay.active {
   opacity: 1;
   visibility: visible;
 }
 
-/* Темна тема для меню */
+/* ТЕМНА ТЕМА */
+
+body.dark-mode {
+  background-color: #121212;
+  color: #ddd;
+}
+
+body.dark-mode header {
+  background-color: #1e1e1e;
+  box-shadow: 0 1px 5px rgba(255,255,255,0.1);
+}
+
+body.dark-mode .logo {
+  color: #eee;
+}
+
 body.dark-mode nav {
   background-color: #222;
   box-shadow: -2px 0 8px rgba(255,255,255,0.2);
@@ -232,4 +176,102 @@ body.dark-mode nav {
 body.dark-mode nav a,
 body.dark-mode #theme-toggle {
   color: #ddd;
+}
+
+body.dark-mode .burger div {
+  background-color: #ddd;
+}
+
+/* СЕКЦІЇ */
+
+.hero {
+  max-width: 900px;
+  margin: 20px auto;
+  text-align: center;
+  padding: 0 10px;
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.description {
+  margin-top: 15px;
+  font-size: 20px;
+}
+
+.buttons {
+  max-width: 900px;
+  margin: 20px auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.buttons button {
+  padding: 12px 25px;
+  font-size: 18px;
+  border: none;
+  background-color: #0077cc;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buttons button:hover {
+  background-color: #005fa3;
+}
+
+.meals {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 10px;
+}
+
+.meal-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.meal-card {
+  background-color: white;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  border-radius: 8px;
+  width: 220px;
+  padding: 10px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.meal-card:hover {
+  transform: translateY(-5px);
+}
+
+.meal-title {
+  font-weight: 700;
+  margin: 12px 0 6px 0;
+}
+
+.meal-price {
+  font-weight: 600;
+  color: #0077cc;
+  font-size: 18px;
+}
+
+/* Темна тема для карток */
+
+body.dark-mode .meal-card {
+  background-color: #2b2b2b;
+  box-shadow: 0 2px 8px rgba(255,255,255,0.1);
+}
+
+body.dark-mode .meal-price {
+  color: #66aaff;
 }
