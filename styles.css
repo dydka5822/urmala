@@ -1,28 +1,16 @@
-/* Загальні скидання */
+/* Загальні стилі */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #fffaf0;
-  color: #3e3a2a;
-  padding: 10px;
+  background-color: #fffbea;
+  color: #7b6f33;
   line-height: 1.5;
   min-height: 100vh;
-}
-
-/* Контейнер */
-.wrapper {
-  max-width: 900px;
-  width: 100%;
-  margin: 0 auto;
-  background: #fff;
-  border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
 }
 
 /* Хедер */
@@ -30,27 +18,24 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 25px;
-  border-bottom: 2px solid #d6cfa3;
-  background-color: #fff6dc;
-  position: relative;
-  font-weight: 700;
-  font-size: 20px;
-  color: #5a4f2b;
-  user-select: none;
+  padding: 15px 25px;
+  background-color: #f7f3e8;
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+  box-shadow: 0 2px 8px rgba(123, 111, 51, 0.15);
 }
 
 .logo {
-  font-family: 'Pacifico', cursive;
-  font-size: 26px;
-  color: #7b6f33;
-  text-shadow: 1px 1px 2px #d2c892;
+  font-size: 1.8rem;
+  font-weight: 700;
+  user-select: none;
 }
 
-/* Навігація */
+/* Навігація десктоп */
 nav {
   display: flex;
-  gap: 28px;
+  gap: 25px;
   align-items: center;
 }
 
@@ -58,33 +43,34 @@ nav a {
   text-decoration: none;
   color: #7b6f33;
   font-weight: 600;
-  font-size: 17px;
-  padding: 8px 12px;
+  font-size: 1.1rem;
+  padding: 8px 14px;
   border-radius: 8px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease;
+  user-select: none;
 }
 
 nav a:hover,
 nav a:focus {
   background-color: #d6cfa3;
-  color: #4a4320;
   outline: none;
 }
 
-/* Кнопка темної теми */
+/* Кнопка перемикання теми */
 #theme-toggle {
-  background: none;
+  font-size: 1.3rem;
+  background: transparent;
   border: none;
   cursor: pointer;
-  font-size: 24px;
-  padding-left: 10px;
   color: #7b6f33;
-  transition: transform 0.3s ease;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
 }
 
 #theme-toggle:hover,
 #theme-toggle:focus {
-  transform: scale(1.2);
+  background-color: #d6cfa3;
   outline: none;
 }
 
@@ -92,22 +78,29 @@ nav a:focus {
 .burger {
   display: none;
   flex-direction: column;
-  gap: 6px;
-  cursor: pointer;
+  justify-content: space-between;
   width: 28px;
   height: 22px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  user-select: none;
+  transition: transform 0.3s ease;
 }
 
 .burger div {
-  height: 4px;
+  height: 3.5px;
   background-color: #7b6f33;
   border-radius: 3px;
   transition: all 0.4s ease;
+  box-shadow: none !important;
 }
 
-/* Бургер анімація (хрестик) */
+/* Анімація бургеру в хрестик */
 .burger.open div:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 6px);
+  transform: rotate(45deg) translate(5px, 5px);
 }
 
 .burger.open div:nth-child(2) {
@@ -115,184 +108,226 @@ nav a:focus {
 }
 
 .burger.open div:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Герой */
+/* Герой секція */
 .hero {
-  padding: 25px 20px 30px;
+  max-width: 900px;
+  margin: 20px auto 40px;
+  padding: 0 15px;
   text-align: center;
-  background-color: #fff9e3;
-  border-bottom: 2px solid #d6cfa3;
-  border-radius: 0 0 15px 15px;
 }
 
 .hero img {
-  width: 100%;
+  max-width: 100%;
   height: auto;
-  border-radius: 15px;
-  max-height: 320px;
-  object-fit: cover;
-  box-shadow: 0 6px 15px rgba(183, 167, 105, 0.3);
-  transition: transform 0.3s ease;
-}
-
-.hero img:hover {
-  transform: scale(1.02);
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(123, 111, 51, 0.25);
 }
 
 .description {
   margin-top: 15px;
-  font-size: 20px;
-  color: #6a5f29;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  font-size: 1.3rem;
+  color: #5a5124;
 }
 
 /* Кнопки */
 .buttons {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  padding: 0 15px;
   display: flex;
-  gap: 20px;
-  padding: 25px 20px;
   justify-content: center;
-  flex-wrap: wrap;
-  background-color: #f6f0d6;
-  border-radius: 0 0 15px 15px;
+  gap: 25px;
 }
 
 .buttons button {
-  flex: 1 1 140px;
-  max-width: 220px;
-  padding: 14px 0;
+  background-color: #7b6f33;
+  color: #fffbea;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 1.1rem;
   border: none;
   border-radius: 12px;
-  background-color: #a7974c;
-  color: #fffdfa;
+  padding: 12px 28px;
   cursor: pointer;
-  box-shadow: 0 5px 10px rgba(167, 151, 77, 0.4);
-  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  transition: background-color 0.3s ease;
+  user-select: none;
 }
 
 .buttons button:hover,
 .buttons button:focus {
-  background-color: #847636;
-  box-shadow: 0 7px 14px rgba(132, 119, 54, 0.7);
+  background-color: #a89d59;
   outline: none;
 }
 
 /* Секція страв */
 .meals {
-  padding: 30px 20px 40px;
-  background-color: #fff;
-  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 50px;
+  padding: 0 15px;
 }
 
 .meals h2 {
-  margin-bottom: 28px;
-  color: #6b5e28;
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: 0.03em;
+  font-size: 1.7rem;
+  margin-bottom: 25px;
+  text-align: center;
+  color: #7b6f33;
 }
 
 /* Сітка страв */
 .meal-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  display: flex;
+  justify-content: center;
   gap: 25px;
+  flex-wrap: wrap;
 }
 
-/* Картка страви */
 .meal-card {
-  background: #fff9dc;
-  border-radius: 18px;
-  box-shadow: 0 8px 20px rgba(151, 140, 86, 0.25);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
+  background-color: #f7f3e8;
+  border-radius: 16px;
+  box-shadow: 0 5px 12px rgba(123, 111, 51, 0.15);
+  width: 220px;
+  text-align: center;
+  padding: 15px;
+  transition: transform 0.25s ease;
+  user-select: none;
 }
 
 .meal-card:hover,
 .meal-card:focus-within {
   transform: translateY(-8px);
-  box-shadow: 0 12px 28px rgba(140, 130, 60, 0.45);
-  outline: none;
 }
 
 .meal-card img {
+  border-radius: 12px;
   width: 100%;
-  height: 230px;
-  object-fit: cover;
-  border-bottom: 2px solid #d6cfa3;
+  height: auto;
+  margin-bottom: 12px;
+  user-select: none;
 }
 
 .meal-title {
-  padding: 14px 10px 6px;
   font-weight: 700;
-  color: #7b6f33;
-  font-size: 20px;
+  font-size: 1.2rem;
+  color: #5a5124;
+  margin-bottom: 8px;
 }
 
 .meal-price {
-  padding-bottom: 15px;
-  font-size: 18px;
-  color: #998c5b;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #7b6f33;
 }
 
-/* --- Адаптивність --- */
-
+/* Адаптивність - мобільні пристрої */
 @media (max-width: 700px) {
-  header {
-    padding: 15px 20px;
-    font-size: 18px;
-  }
-  .logo {
-    font-size: 22px;
-  }
-  nav {
-    display: none;
-    flex-direction: column;
-    background-color: #f7f1df;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    width: 100%;
-    border-top: 2px solid #d6cfa3;
-    padding: 15px 0;
-    z-index: 100;
-  }
-  nav.open {
-    display: flex;
-  }
-  nav a {
-    padding: 14px 20px;
-    font-size: 20px;
-    color: #7b6f33;
-    font-weight: 600;
-    text-align: center;
-  }
+  /* Показати бургер */
   .burger {
     display: flex;
   }
+
+  /* Навігація ховається за замовчуванням */
+  nav {
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: rgba(255, 255, 240, 0.98);
+    box-shadow: -2px 0 12px rgba(120, 110, 60, 0.3);
+    padding-top: 70px;
+    gap: 25px;
+    transition: right 0.35s ease-in-out;
+    z-index: 9999;
+  }
+  
+  nav.open {
+    right: 0;
+  }
+
+  nav a {
+    padding: 16px 30px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #7b6f33;
+    border-radius: 12px;
+    user-select: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  nav a:hover,
+  nav a:focus {
+    background-color: #d6cfa3;
+    outline: none;
+  }
+
+  /* Меню та кнопки у хедері */
+  header {
+    padding: 12px 20px;
+  }
+
   .buttons {
     flex-direction: column;
-    gap: 15px;
-    padding: 25px 15px;
+    gap: 18px;
+    padding: 0 20px;
   }
+
   .buttons button {
-    max-width: 100%;
-    font-size: 19px;
+    width: 100%;
   }
+
   .meal-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
   }
-  .hero img {
-    max-height: 250px;
+
+  .meal-card {
+    width: 90%;
+    max-width: 320px;
   }
-  .description {
-    font-size: 18px;
-  }
+}
+
+/* Темна тема */
+.dark-mode {
+  background-color: #272822;
+  color: #c6c6b5;
+}
+
+.dark-mode header {
+  background-color: #3c3a33;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.dark-mode .logo,
+.dark-mode nav a,
+.dark-mode #theme-toggle {
+  color: #c6c6b5;
+}
+
+.dark-mode nav a:hover,
+.dark-mode nav a:focus {
+  background-color: #57554f;
+}
+
+.dark-mode .buttons button {
+  background-color: #57554f;
+  color: #c6c6b5;
+}
+
+.dark-mode .buttons button:hover,
+.dark-mode .buttons button:focus {
+  background-color: #7b7a72;
+}
+
+.dark-mode .meal-card {
+  background-color: #3c3a33;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .meal-title,
+.dark-mode .meal-price {
+  color: #c6c6b5;
 }
