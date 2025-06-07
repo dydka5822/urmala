@@ -1,21 +1,18 @@
-/* --- Базові стилі --- */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #f9f5ef;
   color: #333;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  position: relative;
-  min-height: 100vh;
-  overflow-x: hidden;
+  transition: background-color 0.3s, color 0.3s;
 }
 
+/* Темна тема */
 body.dark-mode {
   background-color: #2e2e2e;
   color: #f9f5ef;
 }
 
-/* --- Декоративні круги --- */
+/* Декоративні елементи */
 body::before {
   content: "";
   position: fixed;
@@ -26,7 +23,6 @@ body::before {
   background: radial-gradient(circle, rgba(255, 225, 150, 0.3), transparent);
   border-radius: 50%;
   z-index: 0;
-  transition: background-color 0.3s ease;
 }
 
 body::after {
@@ -39,7 +35,6 @@ body::after {
   background: radial-gradient(circle, rgba(150, 225, 255, 0.3), transparent);
   border-radius: 50%;
   z-index: 0;
-  transition: background-color 0.3s ease;
 }
 
 /* --- Header --- */
@@ -53,9 +48,9 @@ header {
   padding: 1rem 2rem;
   z-index: 100;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s;
   justify-content: space-between;
-  color: inherit;
+  flex-wrap: nowrap;
 }
 
 body.dark-mode header {
@@ -66,29 +61,33 @@ header .logo {
   font-weight: bold;
   font-size: 1.5rem;
   min-width: 150px;
-  color: inherit;
+  z-index: 1;
 }
 
-/* --- Навігація --- */
-nav {
+header nav {
   display: flex;
+  flex-grow: 1;
+  justify-content: end;
   gap: 1.5rem;
   align-items: center;
+  flex-wrap: nowrap;
 }
 
-nav a {
+header nav a {
   text-decoration: none;
   color: inherit;
-  transition: color 0.3s ease;
+  transition: color 0.3s;
   line-height: 1;
+  padding: 0.3rem 0.5rem;
   white-space: nowrap;
+  z-index: 1;
 }
 
-nav a:hover {
+header nav a:hover {
   color: #d4c8a9;
 }
 
-/* --- Кнопка перемикання теми --- */
+/* Кнопка зміни теми */
 #theme-toggle {
   background: none;
   border: none;
@@ -100,26 +99,30 @@ nav a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 12px;        /* Збільшена зона натискання */
+  min-width: 44px;      /* Мінімальний розмір для touch */
+  min-height: 44px;
+  user-select: none;
+  touch-action: manipulation;
+  z-index: 1;
 }
 
 #theme-toggle:hover {
   transform: rotate(20deg);
 }
 
-/* --- Hero --- */
+/* --- Hero Section --- */
 .hero {
   text-align: center;
   padding: 1rem;
-  color: inherit;
-  position: relative;
   z-index: 1;
+  position: relative;
 }
 
 .hero img {
   max-width: 100%;
   border-radius: 15px;
-  transition: transform 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
 }
 
 .hero img:hover {
@@ -129,10 +132,9 @@ nav a:hover {
 .description {
   margin-top: 1rem;
   font-size: 1rem;
-  color: inherit;
 }
 
-/* --- Buttons --- */
+/* --- Buttons Section --- */
 .buttons {
   display: flex;
   justify-content: center;
@@ -150,9 +152,7 @@ nav a:hover {
   font-size: 1.2rem;
   border-radius: 15px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease, color 0.3s ease;
-  color: #333;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .buttons button:hover {
@@ -163,20 +163,18 @@ nav a:hover {
 body.dark-mode .buttons button {
   background-color: #444;
   color: #f9f5ef;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
 }
 
 body.dark-mode .buttons button:hover {
   background-color: #555;
 }
 
-/* --- Meals --- */
+/* --- Meals Section --- */
 .meals {
   padding: 1rem 2rem;
-  text-align: center;
-  color: inherit;
   z-index: 1;
   position: relative;
+  text-align: center;
 }
 
 .meals h2 {
@@ -186,13 +184,10 @@ body.dark-mode .buttons button:hover {
   display: inline-block;
   padding: 0.3rem 1rem;
   border-radius: 15px;
-  color: #333;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body.dark-mode .meals h2 {
   background-color: #555;
-  color: #f9f5ef;
 }
 
 .meal-grid {
@@ -208,11 +203,10 @@ body.dark-mode .meals h2 {
   padding: 0.5rem;
   text-align: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
   max-width: 220px;
   width: 100%;
-  color: #333;
 }
 
 .meal-card:hover {
@@ -222,7 +216,6 @@ body.dark-mode .meals h2 {
 
 body.dark-mode .meal-card {
   background-color: #444;
-  color: #f9f5ef;
 }
 
 .meal-card img {
@@ -237,34 +230,53 @@ body.dark-mode .meal-card {
 
 .meal-price {
   color: #555;
-  transition: color 0.3s ease;
 }
 
 body.dark-mode .meal-price {
   color: #ccc;
 }
 
-/* --- Адаптивність кнопок та меню --- */
+/* --- Адаптивність --- */
 @media (max-width: 600px) {
+  header {
+    padding: 0.5rem 1rem;
+  }
+
+  header .logo {
+    min-width: auto;
+    font-size: 1.2rem;
+  }
+
+  header nav {
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  header nav a {
+    font-size: 0.9rem;
+    padding: 0.2rem 0.4rem;
+  }
+
+  #theme-toggle {
+    font-size: 1.3rem;
+    min-width: 44px;
+    min-height: 44px;
+    margin-left: 0.5rem;
+    padding: 10px;
+  }
+
   .buttons {
     flex-direction: column;
-    align-items: stretch;
-    gap: 1rem;
-    margin: 0 1rem;
+    align-items: center;
   }
+
   .buttons button {
-    width: 100%;
-    padding: 1rem 0;
-    font-size: 1.1rem;
-    border-radius: 12px;
+    flex: 1 1 100%;
+    margin: 0.5rem 0;
   }
-  
-  .meal-grid {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-  }
-  .meal-card {
-    max-width: 100%;
-    margin: 0 auto;
+
+  .hero img {
+    max-height: 200px;
+    object-fit: cover;
   }
 }
