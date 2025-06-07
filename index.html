@@ -58,6 +58,27 @@
   </div>
 </section>
 
-<script src="script.js"></script>
+<script>
+  const burger = document.getElementById('burger');
+const nav = document.getElementById('nav');
+const overlay = document.getElementById('overlay');
+const themeToggle = document.getElementById('theme-toggle');
+
+burger.addEventListener('click', () => {
+  nav.classList.toggle('open');
+  overlay.classList.toggle('active');
+});
+
+overlay.addEventListener('click', () => {
+  nav.classList.remove('open');
+  overlay.classList.remove('active');
+});
+
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+});
+
+</script>
 </body>
 </html>
