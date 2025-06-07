@@ -3,102 +3,91 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Кафе Юрмала</title>
+  <title>Приклад з бургер-меню</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <div class="logo">Кафе Юрмала</div>
 
-    <div class="burger" id="burger" aria-label="Відкрити меню" role="button" tabindex="0">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+<header>
+  <div class="logo">LOGO</div>
 
-    <nav id="nav">
-      <a href="#">Меню</a>
-      <a href="#">Про нас</a>
-      <a href="#">Контакти</a>
-      <button id="theme-toggle" aria-label="Переключити тему">🌙</button>
-    </nav>
-  </header>
+  <nav>
+    <a href="#">Головна</a>
+    <a href="#">Про нас</a>
+    <a href="#">Меню</a>
+    <a href="#">Контакти</a>
+  </nav>
 
-  <div id="overlay"></div>
+  <button id="theme-toggle" aria-label="Перемикання теми">🌓</button>
 
+  <div class="burger" aria-label="Меню" aria-expanded="false" role="button" tabindex="0">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</header>
+
+<div class="mobile-nav" aria-hidden="true">
+  <a href="#">Головна</a>
+  <a href="#">Про нас</a>
+  <a href="#">Меню</a>
+  <a href="#">Контакти</a>
+</div>
+
+<main>
   <section class="hero">
-    <img src="https://via.placeholder.com/800x300" alt="Герой зображення" width="800" height="300" />
-    <p class="description">Ласкаво просимо до нашого ресторану!</p>
+    <img src="https://picsum.photos/600/300" alt="Hero Image" />
+    <p class="description">Опис героя з новим стилем і плавними переходами</p>
   </section>
 
   <section class="buttons">
-    <button>Замовити</button>
-    <button>Меню</button>
-    <button>Контакти</button>
+    <button>Кнопка 1</button>
+    <button>Кнопка 2</button>
+    <button>Кнопка 3</button>
   </section>
 
   <section class="meals">
-    <h2>Наші страви</h2>
+    <h2>Наше меню</h2>
     <div class="meal-grid">
       <div class="meal-card">
-        <img src="https://via.placeholder.com/220" alt="Страва 1" width="220" height="220" />
-        <div class="meal-title">Страва 1</div>
-        <div class="meal-price">120 грн</div>
+        <img src="https://picsum.photos/220/150?1" alt="Блюдо 1" />
+        <div class="meal-title">Блюдо 1</div>
+        <div class="meal-price">₴100</div>
       </div>
       <div class="meal-card">
-        <img src="https://via.placeholder.com/220" alt="Страва 2" width="220" height="220" />
-        <div class="meal-title">Страва 2</div>
-        <div class="meal-price">150 грн</div>
+        <img src="https://picsum.photos/220/150?2" alt="Блюдо 2" />
+        <div class="meal-title">Блюдо 2</div>
+        <div class="meal-price">₴120</div>
       </div>
       <div class="meal-card">
-        <img src="https://via.placeholder.com/220" alt="Страва 3" width="220" height="220" />
-        <div class="meal-title">Страва 3</div>
-        <div class="meal-price">100 грн</div>
+        <img src="https://picsum.photos/220/150?3" alt="Блюдо 3" />
+        <div class="meal-title">Блюдо 3</div>
+        <div class="meal-price">₴90</div>
       </div>
     </div>
   </section>
+</main>
 
-  <script>
-   const burger = document.getElementById('burger');
-const nav = document.getElementById('nav');
-const overlay = document.getElementById('overlay');
-const themeToggle = document.getElementById('theme-toggle');
+<script>
+  // Бургер меню
+  const burger = document.querySelector('.burger');
+  const mobileNav = document.querySelector('.mobile-nav');
 
-function openMenu() {
-  nav.classList.add('open');
-  overlay.classList.add('active');
-  burger.classList.add('open');
-}
+  burger.addEventListener('click', () => {
+    const expanded = burger.getAttribute('aria-expanded') === 'true' || false;
+    burger.classList.toggle('active');
+    mobileNav.classList.toggle('active');
 
-function closeMenu() {
-  nav.classList.remove('open');
-  overlay.classList.remove('active');
-  burger.classList.remove('open');
-}
+    burger.setAttribute('aria-expanded', !expanded);
+    mobileNav.setAttribute('aria-hidden', expanded);
+  });
 
-burger.addEventListener('click', () => {
-  if (nav.classList.contains('open')) {
-    closeMenu();
-  } else {
-    openMenu();
-  }
-});
+  // Перемикач теми
+  const themeToggle = document.getElementById('theme-toggle');
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+  });
+</script>
 
-overlay.addEventListener('click', () => {
-  closeMenu();
-});
-
-// Щоб клік всередині меню не закривав його
-nav.addEventListener('click', (e) => {
-  e.stopPropagation();
-});
-
-// Темна/світла тема
-themeToggle.addEventListener('click', () => {
-  const dark = document.body.classList.toggle('dark-mode');
-  themeToggle.textContent = dark ? '☀️' : '🌙';
-});
-
-  </script>
 </body>
 </html>
