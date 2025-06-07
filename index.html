@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Приклад з бургер-меню</title>
+  <title>Приклад без бургер-меню</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -19,20 +19,7 @@
   </nav>
 
   <button id="theme-toggle" aria-label="Перемикання теми">🌓</button>
-
-  <div class="burger" aria-label="Меню" aria-expanded="false" role="button" tabindex="0">
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
 </header>
-
-<div class="mobile-nav" aria-hidden="true">
-  <a href="#">Головна</a>
-  <a href="#">Про нас</a>
-  <a href="#">Меню</a>
-  <a href="#">Контакти</a>
-</div>
 
 <main>
   <section class="hero">
@@ -69,19 +56,6 @@
 </main>
 
 <script>
-  // Бургер меню
-  const burger = document.querySelector('.burger');
-  const mobileNav = document.querySelector('.mobile-nav');
-
-  burger.addEventListener('click', () => {
-    const expanded = burger.getAttribute('aria-expanded') === 'true' || false;
-    burger.classList.toggle('active');
-    mobileNav.classList.toggle('active');
-
-    burger.setAttribute('aria-expanded', !expanded);
-    mobileNav.setAttribute('aria-hidden', expanded);
-  });
-
   // Перемикач теми
   const themeToggle = document.getElementById('theme-toggle');
   themeToggle.addEventListener('click', () => {
