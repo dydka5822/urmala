@@ -51,11 +51,27 @@
 
   <script>
     const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        body.classList.add('dark-mode');
+      } else {
+        body.classList.remove('dark-mode');
+      }
+    }
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      applyTheme(savedTheme);
+    } else {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(prefersDark ? 'dark' : 'light');
+    }
 
     themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      // Для дебагу можна раскоментити:
-      // console.log('Theme toggled. Current classList:', document.body.classList.value);
+      const isDark = body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
   </script>
 </body>
