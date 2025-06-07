@@ -203,3 +203,33 @@ body.dark-mode .meal-price {
     max-width: 300px;
   }
 }
+
+/* Бекдроп (темний фон поза меню) */
+#overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 999; /* менше ніж у nav (1000+) */
+}
+
+/* Активний бекдроп — показати */
+#overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Темна тема для меню */
+body.dark-mode nav {
+  background-color: #222;
+  box-shadow: -2px 0 8px rgba(255,255,255,0.2);
+}
+
+body.dark-mode nav a,
+body.dark-mode #theme-toggle {
+  color: #ddd;
+}
