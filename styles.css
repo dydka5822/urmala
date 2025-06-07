@@ -1,104 +1,61 @@
-/* styles.css */
-
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #fff;
-  color: #3a3a3a;
-  line-height: 1.5;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
+/* ЗАГАЛЬНІ СТИЛІ */
+* {
+  box-sizing: border-box;
 }
 
-/* Header */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fff;
+  color: #222;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  line-height: 1.5;
+  padding: 0 15px;
+}
+
 header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
-  background-color: #fafafa;
-  box-shadow: 0 2px 8px rgba(58, 58, 58, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #ddd;
 }
 
 .logo {
   font-weight: 700;
-  font-size: 1.6rem;
-  color: #3a3a3a;
-}
-
-nav {
-  display: flex;
-  align-items: center;
-  gap: 15px;
+  font-size: 1.5rem;
 }
 
 nav a {
+  margin: 0 10px;
+  color: #222;
   text-decoration: none;
-  color: #3a3a3a;
   font-weight: 600;
-  padding: 6px 12px;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
+  transition: color 0.3s ease;
 }
 
-nav a:hover,
-nav a:focus {
-  background-color: #e0e0e0;
-  outline: none;
+nav a:hover {
+  color: #007bff;
 }
 
 #theme-toggle {
-  font-size: 1.2rem;
   background: none;
   border: none;
+  font-size: 24px;
   cursor: pointer;
-  color: #3a3a3a;
-  padding: 6px 10px;
-  border-radius: 6px;
-  transition: background-color 0.3s ease;
+  margin-left: 10px;
+  color: #222;
+  transition: color 0.3s ease;
 }
 
-#theme-toggle:hover,
-#theme-toggle:focus {
-  background-color: #e0e0e0;
-  outline: none;
+#theme-toggle:hover {
+  color: #007bff;
 }
 
-/* Burger menu */
-.burger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-}
-
-.burger div {
-  width: 25px;
-  height: 3px;
-  background-color: #3a3a3a;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-.burger.open div:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-
-.burger.open div:nth-child(2) {
-  opacity: 0;
-}
-
-.burger.open div:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
-
-/* Hero section */
+/* ГЕРОЙ */
 .hero {
   text-align: center;
-  padding: 20px 15px;
+  margin: 20px 0;
 }
 
 .hero img {
@@ -109,192 +66,140 @@ nav a:focus {
 
 .description {
   font-size: 1.2rem;
-  margin-top: 15px;
-  color: #3a3a3a;
+  margin-top: 10px;
 }
 
-/* Buttons section */
+/* КНОПКИ */
 .buttons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin: 25px 15px;
-  flex-wrap: wrap;
+  text-align: center;
+  margin: 20px 0;
 }
 
 .buttons button {
-  background-color: #5a7a4a;
-  color: #fff;
+  background-color: #007bff;
   border: none;
-  padding: 12px 24px;
-  font-size: 1rem;
-  border-radius: 8px;
-  cursor: pointer;
+  color: white;
+  padding: 12px 25px;
+  margin: 5px;
+  border-radius: 5px;
   font-weight: 600;
+  cursor: pointer;
   transition: background-color 0.3s ease;
-  min-width: 110px;
 }
 
-.buttons button:hover,
-.buttons button:focus {
-  background-color: #4e6b3f;
-  outline: none;
+.buttons button:hover {
+  background-color: #0056b3;
 }
 
-/* Meals section */
+/* СТРАВИ */
 .meals {
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 0 15px 40px;
+  margin-bottom: 40px;
 }
 
 .meals h2 {
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 25px;
-  color: #3a3a3a;
+  margin-bottom: 20px;
 }
 
 .meal-grid {
   display: flex;
   justify-content: center;
-  gap: 20px;
   flex-wrap: wrap;
+  gap: 20px;
 }
 
 .meal-card {
-  background-color: #fefefe;
-  border-radius: 12px;
-  box-shadow: 0 5px 12px rgba(90, 122, 74, 0.15);
-  max-width: 220px;
-  width: 100%;
-  text-align: center;
-  padding-bottom: 15px;
+  width: 220px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  background-color: #fafafa;
   transition: transform 0.3s ease;
 }
 
-.meal-card:hover,
-.meal-card:focus-within {
+.meal-card:hover {
   transform: translateY(-5px);
 }
 
 .meal-card img {
-  border-radius: 12px 12px 0 0;
+  display: block;
   width: 100%;
   height: auto;
 }
 
 .meal-title {
-  margin-top: 12px;
   font-weight: 700;
+  padding: 10px;
   font-size: 1.1rem;
-  color: #3a3a3a;
 }
 
 .meal-price {
-  margin-top: 5px;
+  padding: 0 10px 10px;
   font-weight: 600;
-  color: #5a7a4a;
-  font-size: 1rem;
+  color: #555;
 }
 
-/* Responsive styles */
-@media (max-width: 900px) {
-  .meal-grid {
-    justify-content: center;
-  }
+/* ТЕМНА ТЕМА */
+body.dark-mode {
+  background-color: #121212;
+  color: #ddd;
 }
 
+body.dark-mode header {
+  border-color: #444;
+}
+
+body.dark-mode nav a {
+  color: #ddd;
+}
+
+body.dark-mode nav a:hover {
+  color: #1e90ff;
+}
+
+body.dark-mode #theme-toggle {
+  color: #ddd;
+}
+
+body.dark-mode .buttons button {
+  background-color: #1e90ff;
+}
+
+body.dark-mode .buttons button:hover {
+  background-color: #0f5bb5;
+}
+
+body.dark-mode .meal-card {
+  background-color: #222;
+  border-color: #333;
+  box-shadow: 0 2px 8px rgb(255 255 255 / 0.05);
+}
+
+body.dark-mode .meal-price {
+  color: #bbb;
+}
+
+/* Адаптивність */
 @media (max-width: 600px) {
-  header {
-    padding: 10px 15px;
+  .meal-grid {
+    flex-direction: column;
+    align-items: center;
   }
 
   nav {
-    position: fixed;
-    top: 58px;
-    right: 0;
-    background-color: #fafafa;
-    width: 60%;
-    max-width: 280px;
-    height: 100vh;
+    display: flex;
     flex-direction: column;
-    padding: 30px 15px;
-    gap: 25px;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-    box-shadow: -3px 0 15px rgba(90, 122, 74, 0.3);
-    border-radius: 10px 0 0 10px;
-  }
-
-  nav.open {
-    transform: translateX(0);
+    align-items: center;
+    gap: 10px;
   }
 
   nav a {
-    font-size: 1.1rem;
-    padding: 12px 10px;
-  }
-
-  #theme-toggle {
-    font-size: 1.5rem;
-    padding: 12px 0;
-  }
-
-  .burger {
-    display: flex;
-  }
-
-  .buttons {
-    flex-direction: column;
-    gap: 15px;
-    margin: 20px 15px;
+    font-size: 1.2rem;
   }
 
   .buttons button {
     width: 100%;
-    min-width: unset;
+    max-width: 300px;
   }
-}
-
-/* Dark mode styles */
-.dark-mode {
-  background-color: #272822;
-  color: #c6c6b5;
-}
-
-.dark-mode header {
-  background-color: #3c3a33;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
-}
-
-.dark-mode .logo,
-.dark-mode nav a,
-.dark-mode #theme-toggle {
-  color: #c6c6b5;
-}
-
-.dark-mode nav a:hover,
-.dark-mode nav a:focus {
-  background-color: #57554f;
-}
-
-.dark-mode .buttons button {
-  background-color: #57554f;
-  color: #c6c6b5;
-}
-
-.dark-mode .buttons button:hover,
-.dark-mode .buttons button:focus {
-  background-color: #7b7a72;
-}
-
-.dark-mode .meal-card {
-  background-color: #3c3a33;
-  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5);
-}
-
-.dark-mode .meal-title,
-.dark-mode .meal-price {
-  color: #c6c6b5;
 }
