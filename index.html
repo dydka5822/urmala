@@ -62,34 +62,37 @@
 <script>
 const burger = document.getElementById('burger');
 const nav = document.getElementById('nav');
-const themeToggle = document.getElementById('theme-toggle');
 const overlay = document.getElementById('overlay');
 
-function toggleMenu() {
-  nav.classList.toggle('open');
-  burger.classList.toggle('open');
-  overlay.classList.toggle('active');
+function openMenu() {
+  nav.classList.add('open');
+  overlay.classList.add('active');
 }
 
-burger.addEventListener('click', toggleMenu);
+function closeMenu() {
+  nav.classList.remove('open');
+  overlay.classList.remove('active');
+}
 
-burger.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter' || e.key === ' ') {
-    e.preventDefault();
-    toggleMenu();
+// Відкриваємо меню по кліку на бургер
+burger.addEventListener('click', () => {
+  if (nav.classList.contains('open')) {
+    closeMenu();
+  } else {
+    openMenu();
   }
 });
 
+// Клік по overlay закриває меню
 overlay.addEventListener('click', () => {
-  nav.classList.remove('open');
-  burger.classList.remove('open');
-  overlay.classList.remove('active');
+  closeMenu();
 });
 
-themeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-  themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+// Щоб меню не закривалося при кліку **всередині** нього
+nav.addEventListener('click', (event) => {
+  event.stopPropagation();
 });
+
 </script>
 </body>
 </html>
