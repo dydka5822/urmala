@@ -1,65 +1,55 @@
 /* Загальні стилі */
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: Arial, sans-serif;
   background-color: #fff;
-  color: #222;
+  color: #333;
+  min-height: 100vh;
+  overflow-x: hidden; /* Важливо, щоб не було горизонтального скролу */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* Темна тема */
+body.dark-mode {
+  background-color: #121212;
+  color: #eee;
 }
 
+/* Хедер */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  background-color: #fafafa;
+  padding: 15px 20px;
+  background-color: #f4f4f4;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   position: relative;
-  z-index: 1200;
+  z-index: 1300;
+  transition: background-color 0.3s ease;
 }
 
+body.dark-mode header {
+  background-color: #1e1e1e;
+}
+
+/* Логотип */
 .logo {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 1.5rem;
+  color: #333;
 }
 
-/* Бургер меню */
-.burger {
-  width: 30px;
-  height: 22px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-  z-index: 1300;
+body.dark-mode .logo {
+  color: #eee;
 }
 
-.burger div {
-  height: 4px;
-  background-color: #222;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-/* Анімація бургеру при відкритті */
-.burger.open div:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.burger.open div:nth-child(2) {
-  opacity: 0;
-}
-
-.burger.open div:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* Меню навігації */
-#nav {
+/* Навігація - меню */
+nav#nav {
   position: fixed;
   top: 0;
   right: 0;
@@ -74,184 +64,262 @@ header {
   display: flex;
   flex-direction: column;
   padding: 60px 20px 20px 20px;
+  will-change: transform;
 }
 
-#nav.open {
+body.dark-mode nav#nav {
+  background-color: #222;
+  box-shadow: -2px 0 8px rgba(255,255,255,0.1);
+}
+
+nav#nav.open {
   transform: translateX(0);
 }
 
-#nav a {
-  padding: 15px 0;
-  font-size: 18px;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.3s ease;
-  color: #222;
-}
-
-#nav a:hover {
-  border-color: #007bff;
-}
-
-#nav button {
-  margin-top: 20px;
-  padding: 10px;
-  font-size: 18px;
-  cursor: pointer;
-  background: none;
+/* Посилання меню */
+nav#nav a,
+nav#nav button#theme-toggle {
+  padding: 12px 0;
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
   border: none;
-  color: #222;
+  background: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
   text-align: left;
 }
 
-/* Оверлей */
-#overlay {
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0,0,0,0.4);
-  z-index: 1200;
-  display: none;
+body.dark-mode nav#nav a,
+body.dark-mode nav#nav button#theme-toggle {
+  color: #eee;
 }
 
-/* Герой */
+nav#nav a:hover,
+nav#nav button#theme-toggle:hover {
+  color: #007BFF;
+}
+
+/* Бургер меню */
+.burger {
+  display: none; /* за замовчуванням схований */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 1350;
+}
+
+.burger div {
+  width: 100%;
+  height: 3px;
+  background-color: #333;
+  border-radius: 2px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+body.dark-mode .burger div {
+  background-color: #eee;
+}
+
+/* Анімація бургеру при відкритті */
+.burger.open div:nth-child(1) {
+  transform: translateY(8.5px) rotate(45deg);
+}
+
+.burger.open div:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.open div:nth-child(3) {
+  transform: translateY(-8.5px) rotate(-45deg);
+}
+
+/* Секція героя */
 .hero {
+  max-width: 900px;
+  margin: 40px auto 20px;
+  padding: 0 15px;
   text-align: center;
-  padding: 20px;
 }
 
 .hero img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
+  border-radius: 8px;
 }
 
 .description {
-  font-size: 1.2em;
-  margin-top: 10px;
+  margin-top: 15px;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+body.dark-mode .description {
+  color: #bbb;
 }
 
 /* Кнопки */
 .buttons {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 15px;
   display: flex;
   justify-content: center;
   gap: 15px;
-  margin: 20px 0;
 }
 
 .buttons button {
-  padding: 10px 20px;
-  font-size: 18px;
-  cursor: pointer;
-  border: none;
-  background-color: #007bff;
+  padding: 12px 25px;
+  font-size: 1rem;
+  border: 2px solid #007BFF;
+  background-color: #007BFF;
   color: white;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .buttons button:hover {
   background-color: #0056b3;
+  border-color: #0056b3;
 }
 
-/* Страви */
+body.dark-mode .buttons button {
+  background-color: #3399ff;
+  border-color: #3399ff;
+}
+
+body.dark-mode .buttons button:hover {
+  background-color: #66b3ff;
+  border-color: #66b3ff;
+}
+
+/* Наші страви */
 .meals {
-  padding: 0 20px 40px 20px;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 15px 50px;
+  text-align: center;
 }
 
 .meals h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 28px;
+  margin-bottom: 25px;
+  font-size: 2rem;
+  color: #222;
 }
 
+body.dark-mode .meals h2 {
+  color: #ddd;
+}
+
+/* Грід страв */
 .meal-grid {
   display: flex;
+  gap: 25px;
   justify-content: center;
-  gap: 20px;
   flex-wrap: wrap;
 }
 
 .meal-card {
+  background-color: #fafafa;
+  border-radius: 10px;
+  padding: 15px;
   width: 220px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   transition: box-shadow 0.3s ease;
 }
 
 .meal-card:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 15px rgba(0,123,255,0.3);
+}
+
+body.dark-mode .meal-card {
+  background-color: #2a2a2a;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.7);
 }
 
 .meal-card img {
   width: 100%;
   height: auto;
-  display: block;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }
 
 .meal-title {
-  font-weight: bold;
-  padding: 10px 0 5px 0;
-  font-size: 20px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #222;
+}
+
+body.dark-mode .meal-title {
+  color: #eee;
 }
 
 .meal-price {
-  padding-bottom: 15px;
-  color: #555;
-  font-size: 18px;
+  margin-top: 5px;
+  font-size: 1.1rem;
+  color: #007BFF;
+  font-weight: bold;
 }
 
-/* Темна тема */
-body.dark-mode {
-  background-color: #121212;
-  color: #eee;
-}
-
-body.dark-mode header {
-  background-color: #1e1e1e;
-  box-shadow: 0 2px 5px rgba(255,255,255,0.1);
-}
-
-body.dark-mode #nav {
-  background-color: #1e1e1e;
-  color: #eee;
-}
-
-body.dark-mode #nav a,
-body.dark-mode #nav button {
-  color: #eee;
-}
-
-body.dark-mode .buttons button {
-  background-color: #3399ff;
-}
-
-body.dark-mode .buttons button:hover {
-  background-color: #1a6ed8;
-}
-
-body.dark-mode .meal-card {
-  background-color: #222;
-  border-color: #333;
-}
-
-body.dark-mode .meal-card:hover {
-  box-shadow: 0 4px 12px rgba(255,255,255,0.2);
+body.dark-mode .meal-price {
+  color: #3399ff;
 }
 
 /* Адаптивність */
-@media (max-width: 600px) {
-  .meal-grid {
-    flex-direction: column;
-    align-items: center;
+
+/* Бургер меню з'являється на мобільних */
+@media (max-width: 768px) {
+  .burger {
+    display: flex;
   }
 
-  .buttons {
-    flex-direction: column;
+  nav#nav {
+    width: 250px;
+    padding-top: 60px;
   }
 
-  .buttons button {
-    width: 100%;
+  nav#nav a,
+  nav#nav button#theme-toggle {
+    font-size: 1.3rem;
+  }
+}
+
+/* Навігація по замовчуванню схована на мобільних */
+@media (max-width: 768px) {
+  nav#nav {
+    /* трансформація працює */
+    transform: translateX(100%);
+  }
+
+  nav#nav.open {
+    transform: translateX(0);
+  }
+}
+
+/* Для більших екранів меню завжди видно горизонтально */
+@media (min-width: 769px) {
+  nav#nav {
+    position: static;
+    height: auto;
+    width: auto;
+    background: none;
+    box-shadow: none;
+    transform: none !important;
+    flex-direction: row;
+    padding: 0;
+  }
+
+  nav#nav a,
+  nav#nav button#theme-toggle {
+    padding: 0 15px;
+    font-size: 1rem;
+  }
+
+  .burger {
+    display: none;
   }
 }
