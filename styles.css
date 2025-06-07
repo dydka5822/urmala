@@ -1,4 +1,3 @@
-/* styles.css */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -7,6 +6,7 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
+/* Темна тема */
 body.dark-mode {
   background-color: #2e2e2e;
   color: #f9f5ef;
@@ -87,6 +87,7 @@ header nav a:hover {
   color: #d4c8a9;
 }
 
+/* Кнопка зміни теми */
 #theme-toggle {
   background: none;
   border: none;
@@ -94,11 +95,15 @@ header nav a:hover {
   cursor: pointer;
   margin-left: 1rem;
   color: inherit;
-  transition: transform 0.2s;
-  min-width: 40px;
+  transition: transform 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 12px;        /* Збільшена зона натискання */
+  min-width: 44px;      /* Мінімальний розмір для touch */
+  min-height: 44px;
+  user-select: none;
+  touch-action: manipulation;
   z-index: 1;
 }
 
@@ -254,8 +259,10 @@ body.dark-mode .meal-price {
 
   #theme-toggle {
     font-size: 1.3rem;
-    min-width: 35px;
+    min-width: 44px;
+    min-height: 44px;
     margin-left: 0.5rem;
+    padding: 10px;
   }
 
   .buttons {
