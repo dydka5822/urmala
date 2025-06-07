@@ -1,23 +1,21 @@
-/* Базові стилі */
+/* Загальні стилі */
+
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 body {
+  margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #ffffff; /* чистий білий */
-  color: #222222; /* темно-сірий майже чорний */
-  line-height: 1.6;
-  min-height: 100vh;
-  overflow-x: hidden;
+  background-color: #ffffff;
+  color: #333333;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Темна тема */
 body.dark-mode {
-  background-color: #121212; /* майже чорний */
-  color: #eeeeee; /* світло-сірий */
+  background-color: #121212;
+  color: #cccccc;
 }
 
 /* Хедер */
@@ -25,114 +23,96 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1.5rem;
-  background-color: #ffffff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1300;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  padding: 15px 20px;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+  z-index: 1001;
+  transition: background-color 0.3s ease;
 }
 
 body.dark-mode header {
   background-color: #1e1e1e;
-  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+  border-color: #333;
 }
 
 /* Логотип */
 .logo {
+  font-size: 1.5rem;
   font-weight: bold;
-  font-size: 1.4rem;
-  color: inherit;
+  color: #222222;
+}
+
+body.dark-mode .logo {
+  color: #eee;
 }
 
 /* Навігація */
-nav#nav {
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  width: 250px;
-  background-color: #ffffff;
-  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
-  transform: translateX(100%);
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  padding-top: 60px;
-  z-index: 1250;
-  pointer-events: none;
-  opacity: 0;
-  overflow-y: auto;
+nav {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  color: #222222;
+  align-items: center;
+  gap: 15px;
 }
 
-nav#nav.open {
-  transform: translateX(0);
-  pointer-events: auto;
-  opacity: 1;
-}
-
-body.dark-mode nav#nav {
-  background-color: #222222;
-  box-shadow: -2px 0 8px rgba(255, 255, 255, 0.1);
-  color: #eeeeee;
-}
-
-/* Посилання в меню */
-nav#nav a,
-nav#nav button {
-  padding: 0.75rem 1.5rem;
-  color: inherit;
+nav a {
   text-decoration: none;
-  font-size: 1.1rem;
-  border: none;
-  background: none;
-  cursor: pointer;
-  text-align: left;
-  width: 100%;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  border-radius: 4px;
+  color: #555555;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
-nav#nav a:hover,
-nav#nav button:hover {
-  background-color: #eeeeee;
-  color: #222222;
+nav a:hover,
+nav a:focus {
+  color: #000000;
 }
 
-body.dark-mode nav#nav a:hover,
-body.dark-mode nav#nav button:hover {
-  background-color: #444444;
+body.dark-mode nav a {
+  color: #aaaaaa;
+}
+
+body.dark-mode nav a:hover,
+body.dark-mode nav a:focus {
   color: #ffffff;
 }
 
-/* Бургер меню */
-.burger {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 28px;
-  height: 24px;
+/* Кнопка переключення теми */
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
   cursor: pointer;
-  z-index: 1350;
+  color: #555555;
+  padding: 5px 10px;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode #theme-toggle {
+  color: #ccc;
+}
+
+/* Бургер-меню */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 1100;
 }
 
 .burger div {
-  width: 28px;
   height: 3px;
-  background-color: #222222;
+  background-color: #555;
   border-radius: 2px;
   transition: all 0.3s ease;
 }
 
 body.dark-mode .burger div {
-  background-color: #eeeeee;
+  background-color: #ccc;
 }
 
-/* Анімація бургеру при відкритті */
+/* Анімація бургер-меню відкриття */
 .burger.open div:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
@@ -142,160 +122,223 @@ body.dark-mode .burger div {
 }
 
 .burger.open div:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Герой-секція */
+/* Мобільне меню (спочатку сховане) */
+nav#nav {
+  display: flex;
+  gap: 15px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  nav#nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    background-color: #f8f8f8;
+    flex-direction: column;
+    padding: 60px 20px 20px 20px;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+    transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1050;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  body.dark-mode nav#nav {
+    background-color: #1e1e1e;
+  }
+
+  nav#nav.open {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Навігаційні посилання у мобільному меню */
+  nav#nav a {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #555555;
+  }
+
+  body.dark-mode nav#nav a {
+    color: #cccccc;
+  }
+
+  nav#nav a:hover,
+  nav#nav a:focus {
+    color: #000000;
+  }
+
+  body.dark-mode nav#nav a:hover,
+  body.dark-mode nav#nav a:focus {
+    color: #ffffff;
+  }
+
+  #theme-toggle {
+    font-size: 1.5rem;
+    margin-top: 20px;
+  }
+
+  /* Показуємо бургер */
+  .burger {
+    display: flex;
+  }
+}
+
+/* Герой секція */
 .hero {
-  margin-top: 70px;
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 15px;
   text-align: center;
-  padding: 1rem;
-  color: inherit;
 }
 
 .hero img {
-  max-width: 100%;
+  width: 100%;
   height: auto;
   border-radius: 8px;
+  max-height: 300px;
+  object-fit: cover;
 }
 
-/* Секція кнопок */
+.description {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  color: #444;
+}
+
+body.dark-mode .description {
+  color: #ddd;
+}
+
+/* Кнопки */
 .buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin: 2rem 1rem;
+  text-align: center;
+  margin: 30px 0;
 }
 
 .buttons button {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 6px;
-  background-color: #222222;
-  color: #ffffff;
-  cursor: pointer;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  color: #555555;
+  padding: 10px 20px;
+  margin: 0 10px 10px 10px;
   font-size: 1rem;
-  transition: background-color 0.3s ease;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.buttons button:hover {
-  background-color: #555555;
+.buttons button:hover,
+.buttons button:focus {
+  background-color: #ddd;
+  color: #000000;
 }
 
 body.dark-mode .buttons button {
-  background-color: #eeeeee;
-  color: #222222;
+  background-color: #333333;
+  border-color: #555555;
+  color: #cccccc;
 }
 
-body.dark-mode .buttons button:hover {
-  background-color: #bbbbbb;
+body.dark-mode .buttons button:hover,
+body.dark-mode .buttons button:focus {
+  background-color: #444444;
+  color: #ffffff;
 }
 
-/* Секція страв */
+/* Страви */
 .meals {
-  padding: 1rem;
-  max-width: 1000px;
-  margin: 0 auto 3rem;
-  color: inherit;
+  max-width: 900px;
+  margin: 0 auto 40px auto;
+  padding: 0 15px;
 }
 
 .meals h2 {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 25px;
+  color: #222;
+}
+
+body.dark-mode .meals h2 {
+  color: #eee;
 }
 
 .meal-grid {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 25px;
   flex-wrap: wrap;
 }
 
 .meal-card {
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
   width: 220px;
-  padding-bottom: 1rem;
-  transition: box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-  color: #222222;
-}
-
-.meal-card:hover {
-  box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 2px 7px rgba(0,0,0,0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: background-color 0.3s ease;
 }
 
 body.dark-mode .meal-card {
-  background-color: #1e1e1e;
-  color: #eeeeee;
-  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+  background-color: #2a2a2a;
 }
 
 .meal-card img {
-  border-radius: 8px 8px 0 0;
-  width: 100%;
-  height: auto;
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
 }
 
 .meal-title {
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1.1rem;
-  margin: 0.5rem 1rem 0 1rem;
+  margin: 10px 0 5px 0;
+  color: #333;
+}
+
+body.dark-mode .meal-title {
+  color: #ddd;
 }
 
 .meal-price {
-  color: #888888;
-  margin: 0.3rem 1rem 0 1rem;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 15px;
 }
 
 body.dark-mode .meal-price {
-  color: #bbbbbb;
+  color: #888;
 }
 
-/* Бекдроп для затемнення екрану */
+/* Фоновий накладений шар для закриття меню при кліку поза меню */
 #overlay {
+  display: none;
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0,0,0,0.4);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 1200;
+  background: transparent;
+  z-index: 1040;
 }
 
 #overlay.active {
-  opacity: 1;
-  pointer-events: auto;
+  display: block;
 }
 
-/* Відповідність для десктопа */
-@media (min-width: 768px) {
-  nav#nav {
-    position: static;
-    height: auto;
-    width: auto;
-    background: none;
-    box-shadow: none;
-    transform: none !important;
-    padding-top: 0;
-    flex-direction: row;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    color: inherit;
-  }
-
-  nav#nav a,
-  nav#nav button {
-    padding: 0.5rem 1rem;
-  }
-
-  .burger {
-    display: none;
-  }
-
-  #overlay {
-    display: none;
-  }
+/* Фокусні стилі для доступності */
+a:focus,
+button:focus,
+.burger:focus {
+  outline: 2px solid #0078d7;
+  outline-offset: 2px;
 }
