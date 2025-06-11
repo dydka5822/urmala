@@ -1,1 +1,62 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Про нас - Кафе Юрмала</title>
+  <link rel="stylesheet" href="../styles_v0.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">Кафе Юрмала</div>
+    <nav>
+      <a href="../index.html">Головна</a>
+      <a href="about.html">Про нас</a>
+      <a href="contact.html">Контакти</a>
+    </nav>
+    <button id="theme-toggle" aria-label="Змінити тему">🌓</button>
+  </header>
+
+  <section class="hero">
+    <img src="https://source.unsplash.com/random/600x300?cafe" alt="Про нас" />
+    <p class="description">Дізнайтеся більше про наше кафе!</p>
+  </section>
+
+  <section class="about-content">
+    <h2>Про нас</h2>
+    <p>
+      Кафе "Юрмала" — це затишне місце для зустрічей, смачної їжі та приємної атмосфери. Ми готуємо з любов'ю та використовуємо лише найкращі інгредієнти.
+    </p>
+    <p>
+      Наша команда завжди прагне подарувати вам найкращий сервіс та незабутні враження.
+    </p>
+  </section>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        body.classList.add('dark-mode');
+      } else {
+        body.classList.remove('dark-mode');
+      }
+    }
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      applyTheme(savedTheme);
+    } else {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(prefersDark ? 'dark' : 'light');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const isDark = body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>
 
