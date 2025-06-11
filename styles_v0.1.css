@@ -395,4 +395,34 @@ body.dark-mode .item-desc {
   .item-name {
     max-width: 100%;
   }
+
+  .item-img-wrapper {
+  margin-top: 0.7rem;
+  text-align: center;
 }
+
+.item-img-wrapper img {
+  max-width: 100%;
+  max-height: 150px;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+  cursor: default;
+}
+
+.item-img-wrapper img:hover {
+  transform: scale(1.05);
+}
+
+body.dark-mode .item-img-wrapper img {
+  box-shadow: 0 2px 8px rgba(255,255,255,0.15);
+}
+
+/* Мобільна адаптація */
+@media (max-width: 600px) {
+  .item-img-wrapper img {
+    max-height: 120px;
+  }
+}
+
