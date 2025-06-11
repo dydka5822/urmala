@@ -170,31 +170,38 @@ header nav a:hover {
 }
 
 .buttons button {
-  background-color: #d4c8a9;      /* теплий бежевий */
-  color: #333;                    /* контрастний текст */
-  border: none;                   /* без рамок */
-  padding: 1rem 2rem;             /* відступи */
-  font-size: 1.2rem;              /* розмір шрифту */
-  border-radius: 15px;            /* округлення */
-  cursor: pointer;                /* курсор-покажчик */
-  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);  /* легка тінь */
+  display: inline-block;
+  text-decoration: none;            /* прибираємо підкреслення */
+  background-color: #f9f5ef;        /* теплий фон */
+  color: #333;                      /* темний текст */
+  padding: 0.8rem 1.5rem;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.2s, color 0.3s;
+  cursor: pointer;
 }
 
+.buttons a:hover,
 .buttons button:hover {
-  background-color: #c4b290;      /* темніший бежевий при наведенні */
-  transform: translateY(-3px);    /* легке підняття */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);  /* глибша тінь */
+  background-color: #e0dacd;       /* трохи темніший фон */
+  transform: translateY(-3px);
+  color: #000;                     /* можна зробити більш насичений колір */
 }
 
+body.dark-mode .buttons a,
 body.dark-mode .buttons button {
-  background-color: #555;         /* темна кнопка */
-  color: #f9f5ef;                 /* світлий текст */
+  background-color: #444;
+  color: #f9f5ef;
 }
 
+body.dark-mode .buttons a:hover,
 body.dark-mode .buttons button:hover {
-  background-color: #666;         /* темніший відтінок при наведенні */
+  background-color: #555;
+  color: #fff;
 }
+
 
 /* --- Meals Section --- */
 .meals {
