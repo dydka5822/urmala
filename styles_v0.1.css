@@ -286,4 +286,113 @@ body.dark-mode .meal-price {
   .hero img {
     width: 100%;
   }
+
+  .menu-section {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  z-index: 1;
+  position: relative;
+  text-align: left;
+}
+
+.menu-section h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  background-color: #d4c8a9;
+  padding: 0.3rem 1rem;
+  border-radius: 15px;
+  display: inline-block;
+}
+
+body.dark-mode .menu-section h1 {
+  background-color: #555;
+  color: #f9f5ef;
+}
+
+.menu-category {
+  margin-bottom: 2rem;
+}
+
+.menu-category h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  background-color: #d4c8a9;
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  border-radius: 15px;
+}
+
+body.dark-mode .menu-category h2 {
+  background-color: #555;
+  color: #f9f5ef;
+}
+
+.menu-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.menu-list li {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.menu-list li:hover {
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .menu-list li {
+  background-color: #444;
+  color: #f9f5ef;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.item-name {
+  max-width: 70%;
+}
+
+.item-price {
+  color: #555;
+  font-weight: 600;
+}
+
+body.dark-mode .item-price {
+  color: #ccc;
+}
+
+.item-desc {
+  font-weight: 400;
+  color: #666;
+  margin: 0;
+}
+
+body.dark-mode .item-desc {
+  color: #bbb;
+}
+
+/* Адаптивність */
+@media (max-width: 600px) {
+  .menu-item {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .item-name {
+    max-width: 100%;
+  }
 }
