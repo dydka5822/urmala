@@ -37,6 +37,14 @@ body::after {
   z-index: 0;
 }
 
+/* Сховати декоративні елементи на малих екранах */
+@media (max-width: 600px) {
+  body::before,
+  body::after {
+    display: none;
+  }
+}
+
 /* --- Header --- */
 header {
   position: sticky;
@@ -99,8 +107,8 @@ header nav a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px;        /* Збільшена зона натискання */
-  min-width: 44px;      /* Мінімальний розмір для touch */
+  padding: 12px;
+  min-width: 44px;
   min-height: 44px;
   user-select: none;
   touch-action: manipulation;
@@ -117,6 +125,18 @@ header nav a:hover {
   padding: 1rem;
   z-index: 1;
   position: relative;
+  animation: fadeInHero 1s ease-out;
+}
+
+@keyframes fadeInHero {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero img {
@@ -132,6 +152,10 @@ header nav a:hover {
 .description {
   margin-top: 1rem;
   font-size: 1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* --- Buttons Section --- */
@@ -233,7 +257,7 @@ body.dark-mode .meal-card {
 }
 
 body.dark-mode .meal-price {
-  color: #ccc;
+  color: #ddd; /* Підвищений контраст у темній темі */
 }
 
 /* --- Адаптивність --- */
