@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Меню — Кафе Юрмала</title>
+  <link rel="stylesheet" href="../styles_v0.1.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">Кафе Юрмала</div>
+    <nav>
+      <a href="../index.html">Головна</a>
+      <a href="about.html">Про нас</a>
+      <a href="contact.html">Контакти</a>  
+    </nav>
+    <button id="theme-toggle" aria-label="Змінити тему">🌓</button>
+  </header>
+
+  <main class="menu-section">
+    <h1>Наше меню</h1>
+
+    <section class="menu-category">
+      <h2>Сніданки 🥐</h2>
+      <ul class="menu-list">
+        <li>
+          <div class="menu-item">
+            <span class="item-name">Омлет з овочами</span>
+            <span class="item-price">85 грн</span>
+          </div>
+          <p class="item-desc">Світлий омлет із свіжими овочами, подається з тостом.</p>
+        </li>
+        <li>
+          <div class="menu-item">
+            <span class="item-name">Панкейки з медом</span>
+            <span class="item-price">95 грн</span>
+          </div>
+          <p class="item-desc">М’які панкейки, политі натуральним медом.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="menu-category">
+      <h2>Основні страви 🍽️</h2>
+      <ul class="menu-list">
+        <li>
+          <div class="menu-item">
+            <span class="item-name">Курячі котлети</span>
+            <span class="item-price">120 грн</span>
+          </div>
+          <p class="item-desc">Соковиті котлети з курячого філе з овочевим гарніром.</p>
+        </li>
+        <li>
+          <div class="menu-item">
+            <span class="item-name">Рибне філе з картоплею</span>
+            <span class="item-price">150 грн</span>
+          </div>
+          <p class="item-desc">Запечене філе судака з картопляним пюре.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="menu-category">
+      <h2>Напої ☕</h2>
+      <ul class="menu-list">
+        <li>
+          <div class="menu-item">
+            <span class="item-name">Капучіно</span>
+            <span class="item-price">45 грн</span>
+          </div>
+          <p class="item-desc">Смачний капучіно з молочною піною.</p>
+        </li>
+        <li>
+          <div class="menu-item">
+            <span class="item-name">Зелений чай</span>
+            <span class="item-price">30 грн</span>
+          </div>
+          <p class="item-desc">Запашний зелений чай.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <script>
+    // Той же скрипт для темної теми
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        body.classList.add('dark-mode');
+      } else {
+        body.classList.remove('dark-mode');
+      }
+    }
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      applyTheme(savedTheme);
+    } else {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(prefersDark ? 'dark' : 'light');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const isDark = body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>
