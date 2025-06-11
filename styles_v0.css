@@ -170,27 +170,30 @@ header nav a:hover {
 }
 
 .buttons button {
-  background-color: #eee;
-  border: none;
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  border-radius: 15px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  background-color: #d4c8a9;      /* теплий бежевий */
+  color: #333;                    /* контрастний текст */
+  border: none;                   /* без рамок */
+  padding: 1rem 2rem;             /* відступи */
+  font-size: 1.2rem;              /* розмір шрифту */
+  border-radius: 15px;            /* округлення */
+  cursor: pointer;                /* курсор-покажчик */
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);  /* легка тінь */
 }
 
 .buttons button:hover {
-  background-color: #ddd;
-  transform: translateY(-3px);
+  background-color: #c4b290;      /* темніший бежевий при наведенні */
+  transform: translateY(-3px);    /* легке підняття */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);  /* глибша тінь */
 }
 
 body.dark-mode .buttons button {
-  background-color: #444;
-  color: #f9f5ef;
+  background-color: #555;         /* темна кнопка */
+  color: #f9f5ef;                 /* світлий текст */
 }
 
 body.dark-mode .buttons button:hover {
-  background-color: #555;
+  background-color: #666;         /* темніший відтінок при наведенні */
 }
 
 /* --- Meals Section --- */
