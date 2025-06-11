@@ -160,7 +160,7 @@ header nav a:hover {
 
 /* --- Buttons Section --- */
 .bottons a,
-.buttons {
+.bottons b, {
   display: flex;
   justify-content: center;
   gap: 1rem;
@@ -171,7 +171,7 @@ header nav a:hover {
 }
 
 .buttons a,
-.buttons button {
+.bottons b, {
   display: inline-block;
   background-color: #f9f5ef;
   color: #333;
@@ -191,7 +191,7 @@ header nav a:hover {
 }
 
 .buttons a:hover,
-.buttons button:hover {
+.bottons b:hover, {
   background-color: #e0dacd;
   color: #000;
   transform: translateY(-2px);
@@ -199,26 +199,26 @@ header nav a:hover {
 }
 
 .buttons a:active,
-.buttons button:active {
+.bottons b:active {
   transform: translateY(0px);
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .buttons a:focus,
-.buttons button:focus {
+.bottons b:focus {
   outline: 2px solid #999;
   outline-offset: 2px;
 }
 
 
 body.dark-mode .buttons a,
-body.dark-mode .buttons button {
+body.dark-mode .buttons b {
   background-color: #444;
   color: #f9f5ef;
 }
 
 body.dark-mode .buttons a:hover,
-body.dark-mode .buttons button:hover {
+body.dark-mode .buttons b:hover {
   background-color: #555;
   color: #fff;
 }
