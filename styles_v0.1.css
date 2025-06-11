@@ -183,6 +183,10 @@ header nav a:hover {
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   transition: all 0.3s ease;
   border: 1px solid #ddd; /* Легка обводка */
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .buttons a:hover,
