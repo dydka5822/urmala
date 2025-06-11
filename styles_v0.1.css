@@ -160,7 +160,7 @@ header nav a:hover {
 
 /* --- Buttons Section --- */
 .bottons a,
-.bottons b, {
+.bottons b {
   display: flex;
   justify-content: center;
   gap: 1rem;
@@ -171,7 +171,7 @@ header nav a:hover {
 }
 
 .buttons a,
-.bottons b, {
+.bottons b {
   display: inline-block;
   background-color: #f9f5ef;
   color: #333;
@@ -191,7 +191,7 @@ header nav a:hover {
 }
 
 .buttons a:hover,
-.bottons b:hover, {
+.bottons b:hover {
   background-color: #e0dacd;
   color: #000;
   transform: translateY(-2px);
