@@ -442,5 +442,32 @@ body.dark-mode .item-img-wrapper img {
   .item-img-wrapper img {
     max-height: 120px;
   }
+.find-us {
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
+.find-us h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.map-container {
+  margin: 1rem auto;
+  max-width: 600px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.contact-info {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+body.dark-mode .map-container {
+  box-shadow: 0 2px 8px rgba(255,255,255,0.1);
+}
