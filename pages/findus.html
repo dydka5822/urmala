@@ -39,5 +39,17 @@
   </div>
 </section>
   <script src="scripts.js"></script>
+
+<script>
+  function expandMap() {
+    const map = document.getElementById("map-frame").cloneNode(true);
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("fullscreen-map");
+    wrapper.appendChild(map);
+    wrapper.onclick = () => wrapper.remove();
+    document.body.appendChild(wrapper);
+  }
+</script>
+  
 </body>
 </html>
