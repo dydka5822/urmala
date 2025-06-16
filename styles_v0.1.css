@@ -1,3 +1,4 @@
+/* === Базовий стиль === */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -6,14 +7,14 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* Темна тема */
 body.dark-mode {
   background-color: #2e2e2e;
   color: #f9f5ef;
 }
 
-/* Декоративні елементи */
-body::before, body::after {
+/* === Декоративні елементи === */
+body::before,
+body::after {
   content: "";
   position: fixed;
   width: 200px;
@@ -21,18 +22,28 @@ body::before, body::after {
   border-radius: 50%;
   z-index: 0;
 }
+
 body::before {
   top: -50px;
   left: -50px;
   background: radial-gradient(circle, rgba(255, 225, 150, 0.3), transparent);
 }
+
 body::after {
   bottom: -50px;
   right: -50px;
   background: radial-gradient(circle, rgba(150, 225, 255, 0.3), transparent);
 }
 
-/* --- Header --- */
+/* Сховати декоративні елементи на мобілках */
+@media (max-width: 600px) {
+  body::before,
+  body::after {
+    display: none;
+  }
+}
+
+/* === Header === */
 header {
   position: sticky;
   top: 0;
@@ -40,41 +51,47 @@ header {
   backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 1rem 2rem;
   z-index: 100;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  flex-wrap: wrap;
+  transition: background-color 0.3s;
+  justify-content: space-between;
+  flex-wrap: nowrap;
 }
+
 body.dark-mode header {
   background-color: rgba(30, 30, 30, 0.9);
 }
+
 header .logo {
   font-weight: bold;
   font-size: 1.5rem;
   min-width: 150px;
   z-index: 1;
 }
+
 header nav {
   display: flex;
   flex-grow: 1;
   justify-content: end;
   gap: 1.5rem;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
+
 header nav a {
   text-decoration: none;
   color: inherit;
   transition: color 0.3s;
   padding: 0.3rem 0.5rem;
   white-space: nowrap;
+  z-index: 1;
 }
+
 header nav a:hover {
   color: #d4c8a9;
 }
 
-/* Кнопка теми */
 #theme-toggle {
   background: none;
   border: none;
@@ -83,50 +100,73 @@ header nav a:hover {
   margin-left: 1rem;
   color: inherit;
   transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 12px;
   min-width: 44px;
   min-height: 44px;
+  user-select: none;
+  touch-action: manipulation;
+  z-index: 1;
 }
+
 #theme-toggle:hover {
   transform: rotate(20deg);
 }
 
-/* Hero */
+/* === Hero Section === */
 .hero {
   text-align: center;
   padding: 1rem;
+  z-index: 1;
   position: relative;
   animation: fadeInHero 1s ease-out;
 }
+
 @keyframes fadeInHero {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 .hero img {
   max-width: 100%;
   border-radius: 15px;
   transition: transform 0.3s;
 }
+
 .hero img:hover {
   transform: scale(1.03);
 }
+
 .description {
-  margin: 1rem auto 0;
+  margin-top: 1rem;
   font-size: 1rem;
   max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* Buttons */
+/* === Buttons === */
 .buttons {
   display: flex;
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
   margin: 1rem 0;
+  z-index: 1;
   position: relative;
 }
-.buttons a, .buttons b {
+
+.buttons a,
+.buttons b {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -139,33 +179,47 @@ header nav a:hover {
   padding: 0.7rem 1.5rem;
   margin: 0.5rem;
   border-radius: 15px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
   border: 1px solid #ddd;
   text-align: center;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
-.buttons a:hover, .buttons b:hover {
+
+.buttons a:hover,
+.buttons b:hover {
   background-color: #e0dacd;
   color: #000;
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-body.dark-mode .buttons a, body.dark-mode .buttons b {
+
+.buttons a:active,
+.buttons b:active {
+  transform: translateY(0px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .buttons a,
+body.dark-mode .buttons b {
   background-color: #444;
   color: #f9f5ef;
 }
-body.dark-mode .buttons a:hover, body.dark-mode .buttons b:hover {
+
+body.dark-mode .buttons a:hover,
+body.dark-mode .buttons b:hover {
   background-color: #555;
   color: #fff;
 }
 
-/* Meals */
+/* === Meal Cards === */
 .meals {
   padding: 1rem 2rem;
+  z-index: 1;
   position: relative;
   text-align: center;
 }
+
 .meals h2 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
@@ -174,15 +228,18 @@ body.dark-mode .buttons a:hover, body.dark-mode .buttons b:hover {
   padding: 0.3rem 1rem;
   border-radius: 15px;
 }
+
 body.dark-mode .meals h2 {
   background-color: #555;
 }
+
 .meal-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
   justify-items: center;
 }
+
 .meal-card {
   background-color: #fff;
   border-radius: 15px;
@@ -192,87 +249,224 @@ body.dark-mode .meals h2 {
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
   max-width: 220px;
+  width: 100%;
 }
+
 .meal-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
+
 body.dark-mode .meal-card {
   background-color: #444;
 }
+
 .meal-card img {
   width: 100%;
   border-radius: 10px;
 }
+
 .meal-title {
   font-weight: bold;
   margin: 0.5rem 0;
 }
+
 .meal-price {
   color: #555;
 }
+
 body.dark-mode .meal-price {
   color: #ddd;
 }
 
-/* --- Find Us --- */
+/* === Меню секція === */
+.menu-section {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  z-index: 1;
+  position: relative;
+  text-align: left;
+}
+
+.menu-section h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  background-color: #d4c8a9;
+  padding: 0.3rem 1rem;
+  border-radius: 15px;
+  display: inline-block;
+}
+
+body.dark-mode .menu-section h1 {
+  background-color: #555;
+  color: #f9f5ef;
+}
+
+.menu-category {
+  margin-bottom: 2rem;
+}
+
+.menu-category h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  background-color: #d4c8a9;
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  border-radius: 15px;
+}
+
+body.dark-mode .menu-category h2 {
+  background-color: #555;
+  color: #f9f5ef;
+}
+
+.menu-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.menu-list li {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.menu-list li:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .menu-list li {
+  background-color: #444;
+  color: #f9f5ef;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.item-name {
+  max-width: 70%;
+}
+
+.item-price {
+  color: #555;
+  font-weight: 600;
+}
+
+body.dark-mode .item-price {
+  color: #ccc;
+}
+
+.item-desc {
+  font-weight: 400;
+  color: #666;
+}
+
+body.dark-mode .item-desc {
+  color: #bbb;
+}
+
+.item-img-wrapper {
+  margin-top: 0.7rem;
+  text-align: center;
+}
+
+.item-img-wrapper img {
+  max-width: 100%;
+  max-height: 150px;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.item-img-wrapper img:hover {
+  transform: scale(1.05);
+}
+
+body.dark-mode .item-img-wrapper img {
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.15);
+}
+
+/* === Find Us === */
 .find-us {
   padding: 2rem;
   text-align: center;
   position: relative;
+  z-index: 1;
 }
+
 .find-us h1 {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
+
 .map-container {
   margin: 1rem auto;
   max-width: 600px;
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
-body.dark-mode .map-container {
-  box-shadow: 0 2px 8px rgba(255,255,255,0.1);
-}
+
 .contact-info {
   margin-top: 1rem;
   font-size: 1.1rem;
   line-height: 1.6;
 }
 
-/* --- Мобільна адаптація --- */
-@media (max-width: 600px) {
-  body::before, body::after {
-    display: none;
-  }
+body.dark-mode .map-container {
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+}
 
+/* === Mobile Header Adaptation === */
+@media (max-width: 600px) {
   header {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    text-align: center;
   }
 
   header nav {
-    width: 100%;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    width: 100%;
     gap: 0.5rem;
-    flex-wrap: wrap;
   }
 
-  .buttons a, .buttons b {
-    font-size: 1rem;
+  header nav a {
+    display: block;
     width: 100%;
     max-width: 300px;
-    padding: 0.6rem 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
   }
 
-  .meal-grid {
-    grid-template-columns: 1fr;
+  body.dark-mode header nav a {
+    background-color: rgba(60, 60, 60, 0.6);
+  }
+
+  #theme-toggle {
+    margin: 0.5rem auto 0;
   }
 
   .menu-item {
     flex-direction: column;
-    align-items: flex-start;
     gap: 0.3rem;
   }
 
